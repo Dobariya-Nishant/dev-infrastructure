@@ -167,7 +167,7 @@ resource "aws_lb_listener_rule" "this" {
   }
 
   tags = {
-    Description = each.value.descriptions
+    Description = each.value.description
   }
 }
 
