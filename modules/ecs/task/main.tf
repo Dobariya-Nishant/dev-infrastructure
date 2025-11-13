@@ -98,8 +98,8 @@ resource "aws_iam_role_policy_attachment" "task_execution_policy_attach" {
 
 resource "aws_iam_role_policy" "ecs_secrets_access" {
   count = length(var.secrets_read_arns) > 0 ? 1 : 0
-  name = "${var.project_name}-ecs-secrets-access-${var.environment}"
-  role = aws_iam_role.ecs_task_execution_role.name
+  name  = "${var.project_name}-ecs-secrets-access-${var.environment}"
+  role  = aws_iam_role.ecs_task_execution_role.name
 
   policy = jsonencode({
     Version = "2012-10-17"

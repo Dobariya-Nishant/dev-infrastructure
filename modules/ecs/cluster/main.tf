@@ -51,8 +51,8 @@ resource "aws_ecs_cluster_capacity_providers" "this" {
   cluster_name = aws_ecs_cluster.this.name
 
   capacity_providers = concat(
-    [for cp in aws_ecs_capacity_provider.this : cp.name], 
-    ["FARGATE"]                                          
+    [for cp in aws_ecs_capacity_provider.this : cp.name],
+    ["FARGATE"]
   )
 
   default_capacity_provider_strategy {

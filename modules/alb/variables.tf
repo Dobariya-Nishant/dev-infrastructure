@@ -71,10 +71,10 @@ variable "domain_names" {
 variable "target_groups" {
   description = "Map of target group definitions for blue/green"
   type = map(object({
-    name              = string # name suffix for TG
-    port              = number # port to listen on
-    protocol          = string # HTTP or HTTPS
-    target_type       = string # instance or ip
+    name              = string                # name suffix for TG
+    port              = number                # port to listen on
+    protocol          = string                # HTTP or HTTPS
+    target_type       = string                # instance or ip
     enable_http1      = optional(bool, false) # for HTTP1 use only
     health_check_path = optional(string, "/")
   }))
@@ -95,6 +95,6 @@ variable "listener" {
       target_group_key = string
       patterns         = optional(list(string))
       hosts            = optional(list(string))
-    })),{})
+    })), {})
   })
 }

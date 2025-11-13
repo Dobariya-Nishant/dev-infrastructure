@@ -125,7 +125,7 @@ resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.this.arn
   port              = 80
   protocol          = "HTTP"
-  
+
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.blue[var.listener.target_group_key].arn
@@ -175,7 +175,7 @@ resource "aws_lb_listener_rule" "this" {
 # 7. Route53 record to point domain to ALB
 # ========================================
 resource "aws_route53_record" "alias" {
-  count =  var.hostedzone_id != null  ? length(var.domain_names) : 0
+  count = var.hostedzone_id != null ? length(var.domain_names) : 0
 
   zone_id = var.hostedzone_id
   name    = var.domain_names[count.index]

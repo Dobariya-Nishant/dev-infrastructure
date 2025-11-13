@@ -8,7 +8,7 @@ resource "aws_ecs_service" "this" {
   task_definition                   = var.task_definition_arn
   desired_count                     = var.desired_count
   health_check_grace_period_seconds = 200
-  force_new_deployment = true
+  force_new_deployment              = true
 
   network_configuration {
     subnets          = var.subnet_ids
@@ -17,12 +17,12 @@ resource "aws_ecs_service" "this" {
   }
 
   capacity_provider_strategy {
-    capacity_provider = try(var.capacity_provider_strategy, "FARGATE") 
+    capacity_provider = try(var.capacity_provider_strategy, "FARGATE")
     weight            = 2
   }
 
   deployment_controller {
-    type = "CODE_DEPLOY" 
+    type = "CODE_DEPLOY"
   }
 
   load_balancer {
@@ -30,7 +30,7 @@ resource "aws_ecs_service" "this" {
     target_group_arn = var.alb_blue_tg_arn
     container_port   = var.container_port
   }
- 
+
   lifecycle {
     ignore_changes = [load_balancer]
   }
