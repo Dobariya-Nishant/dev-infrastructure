@@ -396,6 +396,26 @@ resource "aws_security_group" "bastion_ec2" {
   }
 }
 
+resource "aws_security_group" "rds" {
+  name        = "${var.project_name}-rds-sg-${var.environment}"
+  description = "Allow inbound PostgreSQL traffic for ${var.project_name}-db-sg-${var.environment}"
+  vpc_id = aws_vpc.this.id
+
+  ingress {
+    from_port   = 5432
+    to_port     = 5432
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
 resource "aws_security_group" "docdb" {
   name = "${var.project_name}-docdb-sg-${var.environment}"
 

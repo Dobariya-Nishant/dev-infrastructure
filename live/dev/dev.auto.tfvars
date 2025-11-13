@@ -1,2 +1,2 @@
-project_name = "cardstudio"
+project_name = "kea"
 environment  = "dev"

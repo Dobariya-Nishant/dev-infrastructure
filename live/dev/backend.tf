@@ -6,9 +6,9 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "cardstudio-terraform-state-bucket"
-    key            = "cardstudio/dev/terraform.tfstate"
-    dynamodb_table = "tf-backend-lock"
+    bucket         = "kea-dev-terraform-state"
+    key            = "terraform.tfstate"
+    dynamodb_table = "kea-dev-terraform-state-lock"
     region         = "us-east-1"
     encrypt        = true
   }

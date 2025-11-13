@@ -53,3 +53,7 @@ output "backend_sg_id" {
 output "docdb_sg_id" {
   value = aws_security_group.docdb.id
 }
+
+output "rds_sg_id" {
+  value = aws_security_group.rds.id
+}
